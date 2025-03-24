@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecorevive - Sustainable Recycling Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #388E3C;
+            --accent-color: #8BC34A;
+            --light-bg: #F1F8E9;
+            --dark-text: #2E7D32;
+            --light-text: #E8F5E9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .auth-buttons .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .auth-buttons .login {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .auth-buttons .login:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .auth-buttons .signup {
+            background: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            color: white;
+        }
+        
+        .auth-buttons .signup:hover {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(76, 175, 80, 0.8), rgba(56, 142, 60, 0.8)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero .btn:hover {
+            background: var(--light-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Image Slider */
+        .slider-container {
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            display: block;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 20px;
+        }
+        
+        .slide-content h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        
+        .slider-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            color: var(--primary-color);
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 15px;
+        }
+        
+        .slider-btn:hover {
+            background: white;
+        }
+        
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .dot.active {
+            background: var(--primary-color);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-item i {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-item h3 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            font-size: 18px;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 30px 20px;
+            margin: 10px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        /* Why Choose Us */
+        .why-choose-us {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .feature {
+            flex: 0 0 calc(33.333% - 30px);
+            margin-bottom: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature i {
+            color: var(--primary-color);
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 40px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial {
+            min-width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .testimonial-content {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-content:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: var(--light-bg) transparent transparent;
+        }
+        
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .testimonial h4 {
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+        
+        .testimonial p.position {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .testimonial-dot.active {
+            background: var(--primary-color);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(56, 142, 60, 0.9)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+        
+        .cta-buttons .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .cta-buttons .btn-primary:hover {
+            background: var(--light-bg);
+            transform: translateY(-3px);
+        }
+        
+        .cta-buttons .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #2E7D32;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-bottom: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .feature {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 10px 0;
+            }
+            
+            .auth-buttons {
+                display: none;
+                width: 100%;
+                text-align: center;
+                margin-top: 15px;
+            }
+            
+            .auth-buttons.active {
+                display: block;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h2 {
+                font-size: 30px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+            }
+            
+            .stat-item {
+                margin-bottom: 30px;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 20px;
+            }
+            
+            .feature {
+                flex: 0 0 100%;
+            }
+            
+            .footer-col {
+                flex: 0 0 50%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero h2 {
+                font-size: 24px;
+            }
+            
+            .hero .btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .cta-buttons .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+            
+            .footer-col {
+                flex: 0 0 100%;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-col h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/50x50?text=ER" alt="Ecorevive Logo">
+                <h1>Ecorevive</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#recycling">Recycling</a></li>
+                    <li><a href="#plastics">Plastics</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#initiatives">Our Initiatives</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons" id="authButtons">
+                <button class="btn login">Login</button>
+                <button class="btn signup">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 class="animated">Reviving Our Planet Through Recycling</h2>
+            <p class="animated delay-1">Join us in our mission to create a sustainable future by transforming waste into valuable resources.</p>
+            <a href="#services" class="btn animated delay-2">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Image Slider -->
+    <div class="container">
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Recycling Facility">
+                    <div class="slide-content">
+                        <h3>State-of-the-Art Recycling Facilities</h3>
+                        <p>Our advanced processing centers handle thousands of tons of materials every month</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1587135991058-8816b028691f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Community Program">
+                    <div class="slide-content">
+                        <h3>Community Recycling Programs</h3>
+                        <p>Engaging local communities in sustainable waste management practices</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1481761289552-381112059e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1461&q=80" alt="Education Initiative">
+                    <div class="slide-content">
+                        <h3>Environmental Education</h3>
+                        <p>Teaching the next generation about the importance of recycling and sustainability</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <i class="fas fa-recycle"></i>
+                <h3 id="materialsRecycled">0</h3>
+                <p>Tons of Materials Recycled</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-tree"></i>
+                <h3 id="treesSaved">0</h3>
+                <p>Trees Saved</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <h3 id="communityMembers">0</h3>
+                <p>Community Members Engaged</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-globe"></i>
+                <h3 id="carbonReduced">0</h3>
+                <p>Tons of CO₂ Reduced</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Recycling Process</h2>
+                <p>We follow a comprehensive and efficient process to ensure maximum material recovery and minimal environmental impact.</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Collection</h3>
+                    <p>We collect recyclable materials from homes, businesses, and community drop-off points across the region.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-sort"></i>
+                    </div>
+                    <h3>Sorting</h3>
+                    <p>Materials are carefully sorted by type and quality using both automated systems and manual inspection.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Processing</h3>
+                    <p>Sorted materials are processed into raw materials that can be used to manufacture new products.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing</h3>
+                    <p>Recycled materials are transformed into new products, completing the circular economy loop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Ecorevive</h2>
+                <p>We're committed to making recycling easier, more effective, and more beneficial for everyone involved.</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certified Sustainable</h3>
+                    <p>Our processes meet the highest environmental standards and are certified by leading sustainability organizations.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Proven Results</h3>
+                    <p>We've diverted thousands of tons of waste from landfills and significantly reduced carbon emissions.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Community Focused</h3>
+                    <p>We invest in local communities through education programs and job creation in the green economy.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovative Technology</h3>
+                    <p>We use cutting-edge technology to maximize recycling rates and material purity.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Global Impact</h3>
+                    <p>Our work contributes to international sustainability goals and climate change mitigation efforts.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Transparent Operations</h3>
+                    <p>We provide full visibility into our processes and impact through regular reporting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What People Say About Us</h2>
+                <p>Hear from our partners, customers, and community members about their experiences with Ecorevive.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Ecorevive has transformed our company's waste management approach. Their innovative solutions helped us achieve zero waste to landfill status within just one year."</p>
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                        <h4>Sarah Johnson</h4>
+                        <p class="position">Sustainability Manager, GreenTech Corp</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"The community recycling program Ecorevive implemented in our neighborhood has been life-changing. They made recycling accessible and educated our children about sustainability."</p>
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        <h4>Michael Chen</h4>
+                        <p class="position">Community Leader, Oakwood Residents</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"As a small business owner, Ecorevive's affordable recycling services have helped me reduce costs while meeting my sustainability goals. Their customer service is exceptional."</p>
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa Rodriguez">
+                        <h4>Lisa Rodriguez</h4>
+                        <p class="position">Owner, Bloom Café</p>
+                    </div>
+                </div>
+                <div class="testimonial-nav" id="testimonialNav"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our services and recycling in general.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What materials does Ecorevive accept for recycling?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept a wide range of materials including paper, cardboard, plastics (#1-7), glass, aluminum, steel cans, and electronics. Some specialty items like batteries and light bulbs require special handling - please contact us for details on these materials.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I start recycling with Ecorevive?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Getting started is easy! For residential service, you can sign up online or call our customer service team. We'll provide you with collection bins and a pickup schedule. For businesses, we offer free consultations to design a customized recycling program.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens to the materials after they're collected?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Collected materials are transported to our state-of-the-art sorting facility where they're separated by type and quality. After sorting, materials are processed (cleaned, shredded, melted, etc.) and sold to manufacturers who use them to make new products.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does recycling benefit the environment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Recycling conserves natural resources, saves energy, reduces greenhouse gas emissions, and decreases pollution. For example, recycling aluminum uses 95% less energy than producing new aluminum from raw materials. It also reduces the need for landfills and incineration.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer educational programs about recycling?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer free educational programs for schools, community groups, and businesses. Our programs include facility tours, classroom presentations, and hands-on workshops. We also provide educational materials and curriculum resources for teachers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Join thousands of individuals and businesses who are already reducing their environmental impact with Ecorevive's recycling solutions.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Get Started Today</a>
+                <a href="#" class="btn btn-secondary">Contact Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>About Ecorevive</h3>
+                <p>Ecorevive is a leading recycling and sustainability company committed to creating a cleaner, greener future through innovative waste management solutions.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Useful Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#recycling">Recycling Process</a></li>
+                    <li><a href="#initiatives">Our Initiatives</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Residential Recycling</a></li>
+                    <li><a href="#">Commercial Recycling</a></li>
+                    <li><a href="#">E-Waste Collection</a></li>
+                    <li><a href="#">Hazardous Waste</a></li>
+                    <li><a href="#">Composting Solutions</a></li>
+                    <li><a href="#">Sustainability Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Green Way, Eco City, EC 12345</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(800) 555-ECOR (3267)</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ecorevive.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Fri: 8AM-6PM<br>Sat: 9AM-4PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Ecorevive. All Rights Reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Sitemap</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const authButtons = document.getElementById('authButtons');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            authButtons.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        authButtons.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Image Slider
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const sliderDots = document.getElementById('sliderDots');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        // Create dots
+        for (let i = 0; i < slideCount; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            sliderDots.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.dot');
+        
+        function goToSlide(slideIndex) {
+            slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+            currentSlide = slideIndex;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Auto slide change
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        // Pause on hover
+        const sliderContainer = document.querySelector('.slider-container');
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Testimonial Slider
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const testimonials = document.querySelectorAll('.testimonial');
+        const testimonialNav = document.getElementById('testimonialNav');
+        let currentTestimonial = 0;
+        const testimonialCount = testimonials.length;
+        
+        // Create testimonial dots
+        for (let i = 0; i < testimonialCount; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('testimonial-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToTestimonial(i));
+            testimonialNav.appendChild(dot);
+        }
+        
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        
+        function goToTestimonial(index) {
+            testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
+            currentTestimonial = index;
+            
+            // Update dots
+            testimonialDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+        
+        // Auto testimonial change
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonialCount;
+            goToTestimonial(currentTestimonial);
+        }, 8000);
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Animated Counter for Stats
+        const counters = [
+            { element: document.getElementById('materialsRecycled'), target: 12500, duration: 2000 },
+            { element: document.getElementById('treesSaved'), target: 42000, duration: 2000 },
+            { element: document.getElementById('communityMembers'), target: 8500, duration: 2000 },
+            { element: document.getElementById('carbonReduced'), target: 35600, duration: 2000 }
+        ];
+        
+        function animateCounter(counter) {
+            const start = 0;
+            const increment = counter.target / (counter.duration / 16); // 60fps
+            
+            let current = start;
+            const updateCounter = () => {
+                current += increment;
+                if (current < counter.target) {
+                    counter.element.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.element.textContent = counter.target.toLocaleString();
+                }
+            };
+            
+            updateCounter();
+        }
+        
+        // Intersection Observer for counter animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.stats'));
+        
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animation on Scroll
+        const animatedElements = document.querySelectorAll('.animated');
+        
+        function checkAnimation() {
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkAnimation);
+        window.addEventListener('load', checkAnimation);
+    </script>
+</body>
+</html>
